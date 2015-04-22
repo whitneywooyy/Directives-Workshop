@@ -4,12 +4,15 @@ app.directive('dirPending', function(){
 	return {
 		restrict: "EA",	// End restrict
 		scope: {
-			request: "&",
+			request: "&"
 			// something: "="
 		},	// End scope
+		template: "<button ng-show='!spinner'>Submit</button><img ng-show='spinner' src='giphy.gif' />",
 		link: function(scope, element, attrs){
 			element.on('click', function(){
+				scope.spinner = true;
 				scope.request().then(function(){
+					scope.spinner = false;
 					element.css({"display":"inline"})
 				});
 				element.css({"display":"none"});
@@ -17,9 +20,6 @@ app.directive('dirPending', function(){
 		}	// End link
 	}	// End return object
 });	// End app.directive
-
-// TODO: 
-// CODE IN SPINNING GIF ON DATA LOADING
 
 
 app.directive('dirNotify', function(){
@@ -35,20 +35,16 @@ app.directive('dirNotify', function(){
 			Notification.requestPermission(function(permission){
 				console.log("Permission:", permission);
 				console.log("Notification:", Notification);
-
-				var newNote = new Notification("Hi there!", {body: 'I am here to talk about some shit!', icon: 'dfad.jpg'});
-				console.log("What does this show?", newNote);
 			});
-			// console.log("Title", scope.title);
 
-			// var titleInput = $('.titleInput').val();
-			// var bodyInput = $('.bodyInput').val();
-			// var iconInput = $('.iconInput').val();
-
-			// console.log("Title", titleInput);
-
-			element.on('click', function(titleInput, bodyInput, iconInput){
+			element.on('click', function(){
+				var newNote = new Notification(scope.title, {body: scope.body, icon: scope.icon});
+				console.log("What does this show?", newNote);
 				console.log("Am I clicked?");
+
+				newNote.onShow = function(){
+					setTimeout(newNote.close.bind(newNote), 5000);
+				};
 			})	// End element.on
 
 		}	// End link
