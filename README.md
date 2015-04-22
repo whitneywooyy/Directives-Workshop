@@ -133,7 +133,7 @@ Inside our link block we can write the code necessary to show our pending spinne
 
 ####Steps to complete the "pending" directive
 
-+ Hide, disable, or change the text of the submit button
++ Hide, disable, or change the text of the submit button 
 + Show a spinning icon or gif while we wait for our data
 + Hide the spinner when our data returns
 + Reset the submit button to its original condition
@@ -143,6 +143,7 @@ Inside our link block we can write the code necessary to show our pending spinne
 + Don't let your controller function start until the "element" is "clicked"
 + Make sure your controller function is returning itself and its promise.
 + This will be difficult, don't give up. Tackle one problem at a time.
+// DONE
 
 ###Step 3
 

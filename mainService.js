@@ -6,5 +6,9 @@ app.service('mainService', function($http){
             .then(function (data) {
                 return data;
             });
-    };
+    };	// End this.getData
+
+    // this.pushTitle = function(){
+    // 	return 
+    // };	// End this.pushTitle
 })

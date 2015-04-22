@@ -6,23 +6,24 @@
 <body ng-controller="mainCtrl">
 
 <div>
-<h2>pending</h2>
+<h2>Pending</h2>
 	<form>
 		<input ng-model="query" placeholder="Search"/>
-		<button ng-click="getData()">Submit</button> 
+		<button dir-pending request="getData()">Submit</button> 
 	</form>
 </div>
 
 <div>
 <h2>Notifications</h2>
 	<form>
-		<input ng-model="title" placeholder="title"/>
-		<input ng-model="body" placeholder="body"/>
-		<input ng-model="icon" placeholder="iconUrl"/>
-		<button ng-click="">Submit</button> 
+		<input class="titleInput" ng-model="title" placeholder="title"/>
+		<input class="bodyInput" ng-model="body" placeholder="body"/>
+		<input class="iconInput" ng-model="icon" placeholder="iconUrl"/>
+		<button dir-notify title="pushTitle()" body="pushBody()" icon="pushIcon()">Submit</button> 
 	</form>
 </div>
 
+<!-- SCRIPTS -->
 <scripts>
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
